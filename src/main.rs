@@ -5,7 +5,7 @@ const APP_ID: &str = "ru.nitehost.Catalogizator";
 const WIN_ID: &str = "CatalogizatorApp";
 const UI_FILE: &str = "res/window.ui";
 
-fn main() -> glib::ExitCode {
+fn main() -> gtk::glib::ExitCode {
 
     // приложение
     let app = gtk::Application::builder()

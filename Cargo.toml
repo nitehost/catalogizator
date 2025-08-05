@@ -4,5 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-glib = "0.21.0"
 gtk4 = "0.10.0"
+markdown = "1.0.0"
+pango = "0.21.0"
+rusqlite = "0.37.0"
+syslog = "7.0.0"
