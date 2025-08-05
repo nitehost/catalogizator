@@ -2,6 +2,23 @@
 <interface>
     <requires lib="gtk" version="4.0"/>
 
+    <menu id='app-menu'>
+        <section>
+            <item>
+                <attribute name='label'>New Window</attribute>
+                <!-- <attribute name='action'>app.new</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' >About Sunny</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' >Quit</attribute>
+                <!-- <attribute name='action'>app.quit</attribute> -->
+            </item>
+        </section>
+    </menu>
+
     <object class="GtkApplicationWindow" id="CatalogizatorApp">
     <!-- #MyGtkApp START -->
         <property name="title">Каталогизатор</property>
@@ -15,20 +32,30 @@
                 <property name="spacing">20</property>
 
                 <child>
+                    <object class="GtkPopoverMenuBar">
+                        <property name="menu-model">app-menu
+                            <!-- <object class="GtkPopoverMenu"> -->
+                            <!-- </object> -->
+                        </property>
+                    </object>
+
+                </child>
+
+                <child>
                     <object class="GtkActionBar">
 
                         <child>
                             <object class="GtkDropDown">
-                                <property name="enable-search">true</property>
+                                <!-- <property name="enable-search">true</property> -->
                                 <property name="model">
                                     <object class="GtkStringList">
-                                    <items>
-                                        <item>---</item>
-                                        <item>Фильмы</item>
-                                        <item>Музыка</item>
-                                        <item>Игры</item>
-                                        <item>Заметки</item>
-                                    </items>
+                                        <items>
+                                            <item>-- выберите --</item>
+                                            <item>Фильмы</item>
+                                            <item>Музыка</item>
+                                            <item>Игры</item>
+                                            <item>Заметки</item>
+                                        </items>
                                     </object>
                                 </property>
                             </object>
@@ -55,9 +82,9 @@
                     </object>
                 </child>
 
-
-
-
+                <child>
+                    <!-- content -->
+                </child>
 
             <!-- #main-box END -->
             </object>
