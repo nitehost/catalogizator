@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0"/>
+
+    <object class="GtkApplicationWindow" id="CatalogizatorApp">
+    <!-- #MyGtkApp START -->
+        <property name="title">Коллекции</property>
+        <property name="default-width">640</property>
+        <property name="default-height">480</property>
+        <child>
+
+            <object class="GtkBox" id="main-box">
+            <!-- #main-box START -->
+                <property name="orientation">vertical</property>
+                <property name="spacing">20</property>
+
+                <child>
+                    <object class="GtkActionBar">
+
+                        <child>
+                            <object class="GtkButton">
+                                <property name="label">+</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkStackSwitcher">
+                                <property name="stack">stack-pages</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSearchEntry">
+                                <property name="placeholder-text">Поиск...</property>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+                
+                <child>
+                    <object class="GtkStack" id="stack-pages">
+                    <!-- #stack-pages START -->
+
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">films</property>
+                                <property name="title">Фильмы</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="valign">start</property>
+                                        <property name="margin-start">10</property>
+                                        <property name="margin-end">10</property>
+                                        <!-- <property name="margin-top">10</property> -->
+                                        <property name="margin-bottom">10</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Фильмы</property>
+                                            </object>
+                                        </child>    
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">games</property>
+                                <property name="title">Игры</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="valign">start</property>
+                                        <property name="margin-start">10</property>
+                                        <property name="margin-end">10</property>
+                                        <!-- <property name="margin-top">10</property> -->
+                                        <property name="margin-bottom">10</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Игры</property>
+                                            </object>
+                                        </child>    
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">music</property>
+                                <property name="title">Музыка</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="valign">start</property>
+                                        <property name="margin-start">10</property>
+                                        <property name="margin-end">10</property>
+                                        <!-- <property name="margin-top">10</property> -->
+                                        <property name="margin-bottom">10</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Музыка</property>
+                                            </object>
+                                        </child>    
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">notes</property>
+                                <property name="title">Заметки</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="valign">start</property>
+                                        <property name="margin-start">10</property>
+                                        <property name="margin-end">10</property>
+                                        <!-- <property name="margin-top">10</property> -->
+                                        <property name="margin-bottom">10</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Заметки</property>
+                                            </object>
+                                        </child>    
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+
+                    <!-- #stack-pages END -->
+                    </object>
+                </child>
+                    
+            <!-- #main-box END -->
+            </object>
+
+        </child>
+    <!-- #MyGtkApp END -->
+    </object>
+
+</interface>

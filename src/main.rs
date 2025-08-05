@@ -1,11 +1,13 @@
 use gtk4 as gtk;
 use gtk::prelude::*;
+use gtk::glib;
 
 const APP_ID: &str = "ru.nitehost.Catalogizator";
 const WIN_ID: &str = "CatalogizatorApp";
 const UI_FILE: &str = "res/window.ui";
+const DATABASE: &str = "db/collections.db";
 
-fn main() -> gtk::glib::ExitCode {
+fn main() -> glib::ExitCode {
 
     // приложение
     let app = gtk::Application::builder()
