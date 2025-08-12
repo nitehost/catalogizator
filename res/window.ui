@@ -2,22 +2,6 @@
 <interface>
     <requires lib="gtk" version="4.0"/>
 
-    <menu id='app-menu'>
-        <section>
-            <item>
-                <attribute name='label'>New Window</attribute>
-                <!-- <attribute name='action'>app.new</attribute> -->
-            </item>
-            <item>
-                <attribute name='label' >About Sunny</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
-            </item>
-            <item>
-                <attribute name='label' >Quit</attribute>
-                <!-- <attribute name='action'>app.quit</attribute> -->
-            </item>
-        </section>
-    </menu>
 
     <object class="GtkApplicationWindow" id="CatalogizatorApp">
     <!-- #MyGtkApp START -->
@@ -29,16 +13,58 @@
             <object class="GtkBox" id="main-box">
             <!-- #main-box START -->
                 <property name="orientation">vertical</property>
-                <property name="spacing">20</property>
+                <property name="spacing">0</property>
 
                 <child>
                     <object class="GtkPopoverMenuBar">
-                        <property name="menu-model">app-menu
-                            <!-- <object class="GtkPopoverMenu"> -->
-                            <!-- </object> -->
+                        <property name="menu-model">
+
+                            <menu id="app-menubar">
+                                <submenu>
+                                    <attribute name='label'>Создать</attribute>
+                                    <section>
+                                        <item>
+                                            <attribute name='label'>New Window</attribute>
+                                            <!-- <attribute name='action'>app.new</attribute> -->
+                                        </item>
+                                    </section>
+                                    <section>
+                                        <item>
+                                            <attribute name='label' >About Sunny</attribute>
+                                            <!-- <attribute name='action'>app.about</attribute> -->
+                                        </item>
+                                        <item>
+                                            <attribute name='label' >Quit</attribute>
+                                            <!-- <attribute name='action'>app.quit</attribute> -->
+                                        </item>
+                                    </section>
+                                </submenu>
+                                <submenu>
+                                    <attribute name='label'>Коллекции</attribute>
+                                    <item>
+                                        <attribute name='label'>Создать новую</attribute>
+                                        <!-- <attribute name='action'>app.about</attribute> -->
+                                    </item>
+                                    <item>
+                                        <attribute name='label'>Изменить</attribute>
+                                        <!-- <attribute name='action'>app.quit</attribute> -->
+                                    </item>
+                                </submenu>
+                                <submenu>
+                                    <attribute name='label'>Справка</attribute>
+                                    <item>
+                                        <attribute name='label'>Информация</attribute>
+                                        <!-- <attribute name='action'>app.about</attribute> -->
+                                    </item>
+                                    <item>
+                                        <attribute name='label'>О программе</attribute>
+                                        <!-- <attribute name='action'>app.quit</attribute> -->
+                                    </item>
+                                </submenu>
+                            </menu>
+
                         </property>
                     </object>
-
                 </child>
 
                 <child>
@@ -69,7 +95,13 @@
 
                         <child>
                             <object class="GtkButton">
-                                <property name="label">Коллекции</property>
+                                <property name="label">Редактировать</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton">
+                                <property name="label">Удалить</property>
                             </object>
                         </child>
 
