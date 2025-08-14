@@ -3,125 +3,143 @@
     <requires lib="gtk" version="4.0"/>
 
 
+
     <object class="GtkApplicationWindow" id="CatalogizatorApp">
     <!-- #MyGtkApp START -->
         <property name="title">Каталогизатор</property>
-        <property name="default-width">640</property>
-        <property name="default-height">480</property>
-        <child>
+        <property name="default-width">1024</property>
+        <property name="default-height">768</property>
+        <property name="titlebar">
 
+            <object class="GtkHeaderBar">
+                <property name="show-title-buttons">True</property>
+                <property name="title-widget">
+                    <object class="GtkLabel">
+                        <property name="label" translatable="yes">Каталогизатор</property>
+                        <property name="single-line-mode">True</property>
+                        <property name="ellipsize">end</property>
+                            <property name="width-chars">5</property>
+                        <style>
+                            <class name="title"/>
+                        </style>
+                    </object>
+                </property>
+                <child>
+                    <object class="GtkButton">
+                        <property name="icon-name">list-add-symbolic</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton">
+                        <property name="icon-name">edit-find-symbolic</property>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkMenuButton">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="primary">true</property>
+                        <property name="direction">GTK_ARROW_DOWN</property>
+                        <property name="menu-model">
+                            <menu>
+                                <section>
+                                    <item>
+                                        <attribute name='label' translatable='yes'>Коллекции</attribute>
+                                        <!-- <attribute name='action'>app.about</attribute> -->
+                                    </item>
+                                    <item>
+                                        <attribute name='label' translatable='yes'>Справка</attribute>
+                                        <!-- <attribute name='action'>app.about</attribute> -->
+                                    </item>
+                                    <item>
+                                        <attribute name='label' translatable='yes'>Выход</attribute>
+                                        <!-- <attribute name='action'>app.exit</attribute> -->
+                                    </item>
+                                </section>
+                            </menu>
+                        </property>
+                    </object>
+                </child>
+            </object>
+        </property>
+
+        <child>
             <object class="GtkBox" id="main-box">
             <!-- #main-box START -->
                 <property name="orientation">vertical</property>
                 <property name="spacing">0</property>
 
                 <child>
-                    <object class="GtkPopoverMenuBar">
-                        <property name="menu-model">
+                </child>
 
-                            <menu id="app-menubar">
-                                <submenu>
-                                    <attribute name='label'>Создать</attribute>
-                                    <section>
-                                        <item>
-                                            <attribute name='label'>New Window</attribute>
-                                            <!-- <attribute name='action'>app.new</attribute> -->
-                                        </item>
-                                    </section>
-                                    <section>
-                                        <item>
-                                            <attribute name='label' >About Sunny</attribute>
-                                            <!-- <attribute name='action'>app.about</attribute> -->
-                                        </item>
-                                        <item>
-                                            <attribute name='label' >Quit</attribute>
-                                            <!-- <attribute name='action'>app.quit</attribute> -->
-                                        </item>
-                                    </section>
-                                </submenu>
-                                <submenu>
-                                    <attribute name='label'>Коллекции</attribute>
-                                    <item>
-                                        <attribute name='label'>Создать новую</attribute>
-                                        <!-- <attribute name='action'>app.about</attribute> -->
-                                    </item>
-                                    <item>
-                                        <attribute name='label'>Изменить</attribute>
-                                        <!-- <attribute name='action'>app.quit</attribute> -->
-                                    </item>
-                                </submenu>
-                                <submenu>
-                                    <attribute name='label'>Справка</attribute>
-                                    <item>
-                                        <attribute name='label'>Информация</attribute>
-                                        <!-- <attribute name='action'>app.about</attribute> -->
-                                    </item>
-                                    <item>
-                                        <attribute name='label'>О программе</attribute>
-                                        <!-- <attribute name='action'>app.quit</attribute> -->
-                                    </item>
-                                </submenu>
-                            </menu>
-
+                <child>
+                    <!-- #content START -->
+                    <object class="GtkTreeView" id="treeview1">
+                        <property name="model">
+                          <object class="GtkListStore" id="liststore1">
+                                <columns>
+                                    <column type="gchararray"/>
+                                    <column type="gchararray"/>
+                                    <column type="gint"/>
+                                    <column type="gchararray"/>
+                                </columns>
+                                <data>
+                                    <row>
+                                        <col id="0" translatable="yes">John</col>
+                                        <col id="1" translatable="yes">Doe</col>
+                                        <col id="2">25</col>
+                                        <col id="3" translatable="yes">This is the John Doe row</col>
+                                    </row>
+                                    <row>
+                                        <col id="0" translatable="yes">Mary</col>
+                                        <col id="1" translatable="yes">Unknown</col>
+                                        <col id="2">50</col>
+                                        <col id="3" translatable="yes">This is the Mary Unknown row</col>
+                                    </row>
+                                </data>
+                            </object>
                         </property>
+                        <property name="tooltip-column">3</property>
+                        <child>
+                            <object class="GtkTreeViewColumn" id="column1">
+                                <property name="title">Name</property>
+                                <child>
+                                <object class="GtkCellRendererText" id="renderer1"/>
+                                <attributes>
+                                    <attribute name="text">0</attribute>
+                                </attributes>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkTreeViewColumn" id="column2">
+                                <property name="title">Surname</property>
+                                <child>
+                                <object class="GtkCellRendererText" id="renderer2"/>
+                                <attributes>
+                                    <attribute name="text">1</attribute>
+                                </attributes>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkTreeViewColumn" id="column3">
+                                <property name="title">Age</property>
+                                <child>
+                                <object class="GtkCellRendererText" id="renderer3"/>
+                                <attributes>
+                                    <attribute name="text">2</attribute>
+                                </attributes>
+                                </child>
+                            </object>
+                        </child>
                     </object>
-                </child>
-
-                <child>
-                    <object class="GtkActionBar">
-
-                        <child>
-                            <object class="GtkDropDown">
-                                <!-- <property name="enable-search">true</property> -->
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item>-- выберите --</item>
-                                            <item>Фильмы</item>
-                                            <item>Музыка</item>
-                                            <item>Игры</item>
-                                            <item>Заметки</item>
-                                        </items>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton">
-                                <property name="label">Добавить</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton">
-                                <property name="label">Редактировать</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton">
-                                <property name="label">Удалить</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkSearchEntry">
-                                <property name="placeholder-text">Поиск...</property>
-                            </object>
-                        </child>
-
-                    </object>
-                </child>
-
-                <child>
-                    <!-- content -->
+                    <!-- #content END -->
                 </child>
 
             <!-- #main-box END -->
             </object>
-
         </child>
+
     <!-- #MyGtkApp END -->
     </object>
 
