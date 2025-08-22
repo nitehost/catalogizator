@@ -37,5 +37,3 @@ pub fn get_collections() -> Result<Vec<CatalogCollection>> {
 
     Ok(collections)
 }
-
-// pub fn get_collection_by_id(id: u32) -> String {}
