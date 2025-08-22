@@ -11,21 +11,9 @@ mod collection;
 mod group;
 mod status;
 // mod entry;
-// mod database;
-// mod template;
+mod template;
 
 fn main() -> glib::ExitCode {
-
-    if let Ok(rows) = status::get_statuses(2) {
-        for e in rows {
-            println!(
-                "ID={}, NAME={} COLL={}",
-                e.get_id(),
-                e.get_name(),
-                e.get_collection_id()
-            );
-        }
-    }
 
     // приложение
     let app = gtk::Application::builder()
