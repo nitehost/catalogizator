@@ -10,7 +10,7 @@ const DATABASE: &str = "db/collections.db";
 mod collection;
 mod group;
 mod status;
-// mod entry;
+mod entry;
 mod template;
 
 fn main() -> glib::ExitCode {
