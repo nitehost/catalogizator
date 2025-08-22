@@ -7,7 +7,25 @@ const WIN_ID: &str = "CatalogizatorApp";
 const UI_FILE: &str = "res/window.ui";
 const DATABASE: &str = "db/collections.db";
 
+mod collection;
+mod group;
+mod status;
+// mod entry;
+// mod database;
+// mod template;
+
 fn main() -> glib::ExitCode {
+
+    if let Ok(rows) = status::get_statuses(2) {
+        for e in rows {
+            println!(
+                "ID={}, NAME={} COLL={}",
+                e.get_id(),
+                e.get_name(),
+                e.get_collection_id()
+            );
+        }
+    }
 
     // приложение
     let app = gtk::Application::builder()
@@ -15,7 +33,7 @@ fn main() -> glib::ExitCode {
         .build();
 
     // присоединение к сигналу activate
-    app.connect_activate(on_activate);
+    // app.connect_activate(on_activate);
 
     // запуск приложения
     app.run()
