@@ -6,6 +6,7 @@ const APP_ID: &str = "ru.nitehost.Catalogizator";
 const WIN_ID: &str = "CatalogizatorApp";
 const UI_FILE: &str = "res/window.ui";
 const DATABASE: &str = "db/collections.db";
+const DATEFORMAT: &str = "%Y-%m-%d %H:%M:%S";
 
 mod collection;
 mod entry;
