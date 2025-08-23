@@ -62,20 +62,14 @@
                     </object>
                 </child>
                 <child type="start">
-                    <object class="GtkDropDown">
-                    <property name="model">
-                        <object class="GtkStringList">
+                    <object class="GtkDropDown" id="collections-list">
+                    <!-- <property name="model">
+                        <object class="GtkStringList" >
                             <items>
-                                <item translatable="yes">-- Не выбрано --</item>
-                                <item translatable="yes">Игры</item>
-                                <item translatable="yes">Фильмы</item>
-                                <item translatable="yes">Сериалы</item>
-                                <item translatable="yes">Книги</item>
-                                <item translatable="yes">Заметки</item>
-                                <item translatable="yes">Музыка</item>
+                                <item translatable="yes">Не выбрано</item>
                             </items>
                         </object>
-                    </property>
+                    </property> -->
                     </object>
                 </child>
                 <child type="end">

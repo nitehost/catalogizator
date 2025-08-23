@@ -1,3 +1,5 @@
+use gtk4 as gtk;
+
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Debug)]
@@ -36,4 +38,16 @@ pub fn get_collections() -> Result<Vec<CatalogCollection>> {
     }
 
     Ok(collections)
+}
+
+pub fn get_collections_model() -> Result<gtk::StringList> {
+
+    let stringlist = gtk::StringList::new(&["-- Не выбрано --"]);
+    let collections = get_collections()?;
+
+    for collection in collections {
+        stringlist.append(collection.get_name());
+    }
+
+    Ok(stringlist)
 }
