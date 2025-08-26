@@ -21,6 +21,10 @@
                 <!-- <attribute name='action'>app.about</attribute> -->
             </item>
             <item>
+                <attribute name='label' translatable='yes'>Статистика</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
                 <attribute name='label' translatable='yes'>Справка</attribute>
                 <!-- <attribute name='action'>app.about</attribute> -->
             </item>
@@ -37,7 +41,6 @@
         <property name="default-width">1024</property>
         <property name="default-height">768</property>
         <property name="titlebar">
-
             <object class="GtkHeaderBar">
                 <property name="show-title-buttons">True</property>
                 <property name="title-widget">
@@ -86,14 +89,14 @@
         <child>
             <object class="GtkScrolledWindow">
                  <child>
-                    <object class="GtkBox" id="main-box">
                     <!-- #main-box START -->
+                    <object class="GtkBox" id="main-box">
                         <property name="orientation">horizontal</property>
                         <property name="spacing">0</property>
 
                         <child>
                             <object class="GtkBox">
-                                <property name="spacing">5</property>
+                                <property name="spacing">10</property>
                                 <property name="margin-top">10</property>
                                 <property name="margin-bottom">10</property>
                                 <property name="margin-start">10</property>
@@ -101,17 +104,18 @@
                                 <property name="orientation">vertical</property>
 
                                 <child>
+                                    <!--ENTRIES FLAGS BEGIN-->
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
-                                        <child>
+                                        <property name="margin-bottom">12</property>
+                                        <!-- <child>
                                             <object class="GtkLabel">
-                                                <property name="margin-top">5</property>
                                                 <property name="label">Записи</property>
                                                 <property name="margin-bottom">10</property>
                                             </object>
-                                        </child>
+                                        </child> -->
                                         <child>
-                                            <object class="GtkToggleButton" id="filters-btns">
+                                            <object class="GtkToggleButton" id="entries-flag-btns">
                                                 <property name="label">Все записи [1023]</property>
                                                 <property name="active">True</property>
                                             </object>
@@ -119,126 +123,397 @@
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Избранное [23]</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-flag-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Архивные [154]</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-flag-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Удалённые [32]</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-flag-btns</property>
                                             </object>
                                         </child>
 
                                     </object>
+                                    <!--ENTRIES FLAGS END-->
                                 </child>
 
                                 <child>
+                                    <!--ENTRIES STATUSES BEGIN-->
                                     <object class="GtkBox" id="entries-statuses-filters">
                                         <property name="orientation">vertical</property>
-
-                                        <child>
+                                        <property name="margin-bottom">12</property>
+                                        <!-- <child>
                                             <object class="GtkLabel">
-                                                <property name="margin-top">10</property>
                                                 <property name="margin-bottom">10</property>
                                                 <property name="label">Статусы</property>
+                                            </object>
+                                        </child> -->
+                                        <child>
+                                            <object class="GtkToggleButton" id="entries-status-btns">
+                                                <property name="label">Все статусы</property>
+                                                <property name="active">true</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Буду смотреть (32)</property>
-                                                <property name="group">filters-btns</property>
-                                                <!-- <property name="active">true</property> -->
+                                                <property name="group">entries-status-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Просмотрено (765)</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-status-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Не интересно (12)</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-status-btns</property>
                                             </object>
                                         </child>
 
                                     </object>
+                                    <!--ENTRIES STATUSES END-->
                                 </child>
 
                                 <child>
+                                    <!--ENTRIES GROUPS BEGIN-->
                                     <object class="GtkBox" id="entries-groups-filters">
                                         <property name="orientation">vertical</property>
-
-                                        <child>
+                                        <!-- <child>
                                             <object class="GtkLabel">
-                                                <property name="margin-top">10</property>
                                                 <property name="margin-bottom">10</property>
                                                 <property name="label">Подборки</property>
+                                            </object>
+                                        </child> -->
+                                        <child>
+                                            <object class="GtkToggleButton" id="entries-group-btns">
+                                                <property name="label">Все группы</property>
+                                                <property name="active">true</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Фантастика (43)</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-group-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Ужасы (76)</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-group-btns</property>
                                             </object>
                                         </child>
                                         <child>
                                             <object class="GtkToggleButton">
                                                 <property name="label">Боевики (9)</property>
-                                                <property name="group">filters-btns</property>
+                                                <property name="group">entries-group-btns</property>
                                             </object>
                                         </child>
-
                                     </object>
+                                    <!--ENTRIES STATUSES END-->
                                 </child>
 
                             </object>
                         </child>
 
                         <child>
+                            <object class="GtkSeparator"></object>
+                        </child>
+
+                        <child>
                             <object class="GtkBox">
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">10</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="margin-start">10</property>
+                                <property name="margin-end">10</property>
                                 <property name="hexpand">true</property>
-                                <property name="halign">1</property>
+                                <property name="vexpand">true</property>
+                                <!-- <property name="halign">1</property> -->
+
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Заголовок записи</property>
+                                    <!--SORTING BAR BEGIN-->
+                                    <object class="GtkBox">
+                                        <property name="margin-top">10</property>
+                                        <property name="orientation">horizontal</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Сортировать по:</property>
+                                                <property name="margin-end">10</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton" id="order-btns">
+                                                <!-- <property name="label">ID</property> -->
+                                                <!-- <property name="icon-name">view-sort-ascending</property> -->
+                                                <property name="active">true</property>
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="spacing">5</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="label">ID</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkImage">
+                                                                <property name="icon-name">view-sort-descending-rtl-symbolic</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Название</property>
+                                                <property name="group">order-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Создание</property>
+                                                <property name="group">order-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Обновление</property>
+                                                <property name="group">order-btns</property>
+                                            </object>
+                                        </child>
+                                        <!-- <child>
+                                            <object class="GtkLabel">
+                                                <property name="label">Направление:</property>
+                                                <property name="margin-start">20</property>
+                                                <property name="margin-end">10</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton" id="order-direct-btns">
+                                                <property name="icon-name">view-sort-ascending</property>
+                                                <property name="active">true</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="icon-name">view-sort-descending</property>
+                                                <property name="group">order-direct-btns</property>
+                                            </object>
+                                        </child> -->
                                     </object>
+                                    <!--SORTING BAR END-->
                                 </child>
+
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Тех.данные запси</property>
+                                    <!--ENTRIES LIST BEGIN-->
+                                    <object class="GtkListBox" id="entries-list">
+                                        <property name="hexpand">True</property>
+
+                                        <child>
+                                            <object class="GtkListBoxRow">
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">123</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Просмотрено</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Название фильма</property>
+                                                                <property name="hexpand">True</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">26 августа 2025 12:12</property>
+                                                                <property name="hexpand">False</property>
+                                                                <property name="halign">end</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkListBoxRow">
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">123</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Просмотрено</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Название фильма</property>
+                                                                <property name="hexpand">True</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">26 августа 2025 12:12</property>
+                                                                <property name="hexpand">False</property>
+                                                                <property name="halign">end</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkListBoxRow">
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">123</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Просмотрено</property>
+                                                                <property name="hexpand">false</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">Название фильма</property>
+                                                                <property name="hexpand">True</property>
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="margin-top">10</property>
+                                                                <property name="margin-bottom">10</property>
+                                                                <property name="margin-start">10</property>
+                                                                <property name="margin-end">10</property>
+                                                                <property name="label">26 августа 2025 12:12</property>
+                                                                <property name="hexpand">False</property>
+                                                                <property name="halign">end</property>
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
                                     </object>
+                                    <!--ENTRIES LIST END-->
                                 </child>
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Содержание записи</property>
-                                    </object>
-                                </child>
+
+
                             </object>
                         </child>
 
-                    <!-- #main-box END -->
                     </object>
+                    <!-- #main-box END -->
                 </child>
             </object>
         </child>
        
     <!-- #MyGtkApp END -->
     </object>
+
+    <!-- <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="entry-row-label-1" />
+            <widget name="entry-row-label-2" />
+            <widget name="entry-row-label-3" />
+        </widgets>
+    </object> -->
 
 </interface>

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0"/>
+
+    <menu id="main-menu">
+        <section>
+            <item>
+                <attribute name='label' translatable='yes'>Коллекции</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Статусы</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Группы</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Шаблоны</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Справка</attribute>
+                <!-- <attribute name='action'>app.about</attribute> -->
+            </item>
+            <item>
+                <attribute name='label' translatable='yes'>Выход</attribute>
+                <!-- <attribute name='action'>app.exit</attribute> -->
+            </item>
+        </section>
+    </menu>
+
+    <object class="GtkApplicationWindow" id="CatalogizatorApp">
+    <!-- #MyGtkApp START -->
+        <!-- <property name="title">Каталогизатор [Фильмы]</property> -->
+        <property name="default-width">1024</property>
+        <property name="default-height">768</property>
+        <property name="titlebar">
+
+            <object class="GtkHeaderBar">
+                <property name="show-title-buttons">True</property>
+                <property name="title-widget">
+                    <object class="GtkLabel">
+                        <property name="label" translatable="yes">Каталогизатор</property>
+                        <property name="single-line-mode">True</property>
+                        <property name="ellipsize">end</property>
+                            <property name="width-chars">5</property>
+                        <style>
+                            <class name="title"/>
+                        </style>
+                    </object>
+                </property>
+                <child type="start">
+                    <object class="GtkButton">
+                        <property name="icon-name">list-add-symbolic</property>
+                    </object>
+                </child>
+                <child type="start">
+                    <object class="GtkButton">
+                        <property name="icon-name">edit-find-symbolic</property>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkMenuButton">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="primary">true</property>
+                        <property name="direction">GTK_ARROW_DOWN</property>
+                        <property name="menu-model">main-menu</property>
+                    </object>
+                </child>
+            </object>
+        </property>
+
+        <child>
+            <object class="GtkScrolledWindow">
+                 <child>
+                    <object class="GtkBox" id="main-box">
+                    <!-- #main-box START -->
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">10</property>
+
+                        <child>
+                            <object class="GtkBox" id="main-toolbar">
+                                <property name="orientation">horizontal</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Коллекция:</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown" id="collections-list"></object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Статус:</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown">
+                                        <property name="model">
+                                            <object class="GtkStringList" >
+                                                <items>
+                                                    <item translatable="yes">-- Не выбрано --</item>
+                                                    <item translatable="yes">Буду смотреть</item>
+                                                    <item translatable="yes">Просмотрено</item>
+                                                    <item translatable="yes">Не интересно</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Подборка:</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown">
+                                        <property name="model">
+                                            <object class="GtkStringList" >
+                                                <items>
+                                                    <item translatable="yes">-- Не выбрано --</item>
+                                                    <item translatable="yes">Фантастика</item>
+                                                    <item translatable="yes">Ужасы</item>
+                                                    <item translatable="yes">Боевики</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label">Сортировка:</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown">
+                                        <property name="model">
+                                            <object class="GtkStringList" >
+                                                <items>
+                                                    <item translatable="yes">Идентификатор</item>
+                                                    <item translatable="yes">Название</item>
+                                                    <item translatable="yes">Статус</item>
+                                                    <item translatable="yes">Подборка</item>
+                                                    <item translatable="yes">Дата создания</item>
+                                                    <item translatable="yes">Дата обновления</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkListBox" id="entries-list">
+                                <property name="hexpand">True</property>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">123</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Просмотрено</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Название фильма</property>
+                                                        <property name="hexpand">True</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">123</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Просмотрено</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Название фильма</property>
+                                                        <property name="hexpand">True</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">123</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Просмотрено</property>
+                                                        <property name="hexpand">false</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">Название фильма</property>
+                                                        <property name="hexpand">True</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="margin-top">10</property>
+                                                        <property name="margin-bottom">10</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                        <property name="label">26 августа 2025 12:12</property>
+                                                        <property name="hexpand">False</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                            </object>
+                        </child>
+
+
+                    <!-- #main-box END -->
+                    </object>
+                </child>
+            </object>
+        </child>
+       
+    <!-- #MyGtkApp END -->
+    </object>
+
+</interface>
