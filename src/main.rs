@@ -5,6 +5,7 @@ use gtk4 as gtk;
 const APP_ID: &str = "ru.nitehost.Catalogizator";
 const WIN_ID: &str = "CatalogizatorApp";
 const UI_FILE: &str = "res/window.ui";
+const CSS_FILE: &str = "res/style.css";
 const DATABASE: &str = "db/collections.db";
 const DATEFORMAT: &str = "%Y-%m-%d %H:%M:%S";
 const NOUI: &str = "No Gtk-object in UI-file";
@@ -32,6 +33,17 @@ fn on_activate(app: &gtk::Application) {
 
     // получаем из UI объект окна
     let window: gtk::ApplicationWindow = builder.object(WIN_ID).expect(NOUI);
+
+    // создаём CSS-провайдер
+    let css_provider = gtk::CssProvider::new();
+    css_provider.load_from_path(CSS_FILE);
+
+    // применяем стили
+    gtk::StyleContext::add_provider_for_display(
+        &gtk::gdk::Display::default().expect("No display"),
+        &css_provider,
+        gtk::STYLE_PROVIDER_PRIORITY_USER,
+    );
 
     // заполнить список коллекций
     if let Ok(collections_model) = collection::get_collections_model() {
