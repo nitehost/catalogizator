@@ -93,54 +93,127 @@
 
                         <child>
                             <object class="GtkBox">
-                                <!-- <property name="maring-top">10</property> -->
+                                <property name="spacing">5</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="margin-start">10</property>
+                                <property name="margin-end">10</property>
                                 <property name="orientation">vertical</property>
+
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Статусы</property>
+                                    <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="margin-top">5</property>
+                                                <property name="label">Записи</property>
+                                                <property name="margin-bottom">10</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton" id="filters-btns">
+                                                <property name="label">Все записи [1023]</property>
+                                                <property name="active">True</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Избранное [23]</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Архивные [154]</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Удалённые [32]</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+
                                     </object>
                                 </child>
+
                                 <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Буду смотреть</property>
+                                    <object class="GtkBox" id="entries-statuses-filters">
+                                        <property name="orientation">vertical</property>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="margin-top">10</property>
+                                                <property name="margin-bottom">10</property>
+                                                <property name="label">Статусы</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Буду смотреть (32)</property>
+                                                <property name="group">filters-btns</property>
+                                                <!-- <property name="active">true</property> -->
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Просмотрено (765)</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Не интересно (12)</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+
                                     </object>
                                 </child>
+
                                 <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Просмотрено</property>
+                                    <object class="GtkBox" id="entries-groups-filters">
+                                        <property name="orientation">vertical</property>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="margin-top">10</property>
+                                                <property name="margin-bottom">10</property>
+                                                <property name="label">Подборки</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Фантастика (43)</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Ужасы (76)</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkToggleButton">
+                                                <property name="label">Боевики (9)</property>
+                                                <property name="group">filters-btns</property>
+                                            </object>
+                                        </child>
+
                                     </object>
                                 </child>
-                                <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Не интересно</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="label">Подборки</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Фантастика</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Ужасы</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkButton">
-                                        <property name="label">Боевики</property>
-                                    </object>
-                                </child>
+
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkBox">
                                 <property name="orientation">vertical</property>
+                                <property name="spacing">10</property>
+                                <property name="hexpand">true</property>
+                                <property name="halign">1</property>
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="label">Заголовок записи</property>
