@@ -5,10 +5,10 @@ type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 #[derive(Debug)]
 pub struct EntriesSelection<'a> {
     collection_id: u32,
-    columns: Vector<&'a str>,
+    columns: Vec<&'a str>,
     table: &'a str,
     condition: String,
-    order: Vector<&'a str>,
+    order: Vec<&'a str>,
 }
 
 #[derive(Debug)]
