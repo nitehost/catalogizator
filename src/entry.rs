@@ -3,6 +3,15 @@ use chrono::NaiveDateTime;
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Debug)]
+pub struct EntriesSelection<'a> {
+    collection_id: u32,
+    columns: Vector<&'a str>,
+    table: &'a str,
+    condition: String,
+    order: Vector<&'a str>,
+}
+
+#[derive(Debug)]
 pub struct CatalogEntry {
     id: u32,
     status_id: u32,
@@ -66,15 +75,13 @@ impl CatalogEntry {
 pub fn get_entries(collection_id: u32) -> Result<Vec<CatalogEntry>> {
     let conn = rusqlite::Connection::open(crate::DATABASE)?;
 
-    let mut stmt = conn.prepare(
-        "
+    let mut stmt = conn.prepare("
         SELECT id, status_id, collection_id, group_id,
             flag_favorites, flag_deleted, flag_archived,
             title, image, content, created_date
         FROM entries
         WHERE collection_id = ?1
-    ",
-    )?;
+    ")?;
     let mut rows = stmt.query([collection_id])?;
     let mut entries: Vec<CatalogEntry> = vec![];
 
