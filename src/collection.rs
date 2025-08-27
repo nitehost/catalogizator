@@ -4,16 +4,16 @@ use std::fmt;
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Debug)]
-enum EntryView {
+enum CollectionView {
     List,
     Grid,
 }
 
-impl fmt::Display for EntryView {
+impl fmt::Display for CollectionView {
     fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result {
         match self {
-            EntryView::List => write!(f, "list"),
-            EntryView::Grid => write!(f, "grid"),
+            CollectionView::List => write!(f, "list"),
+            CollectionView::Grid => write!(f, "grid"),
         }
     }
 }
@@ -21,7 +21,7 @@ impl fmt::Display for EntryView {
 #[derive(Debug)]
 pub struct CatalogCollection {
     id: u32,
-    view: EntryView,
+    view: CollectionView,
     name: String,
 }
 
@@ -31,7 +31,7 @@ impl CatalogCollection {
         &self.id
     }
 
-    pub fn get_view(&self) -> &EntryView {
+    pub fn get_view(&self) -> &CollectionView {
         &self.view
     }
 
@@ -54,8 +54,8 @@ pub fn get_collections() -> Result<Vec<CatalogCollection>> {
             CatalogCollection {
                 id: row.get(0)?,
                 view: match row.get::<usize, String>(1)?.as_str() {
-                    "grid" => EntryView::Grid,
-                    _ => EntryView::List,
+                    "grid" => CollectionView::Grid,
+                    _ => CollectionView::List,
                 },
                 name: row.get(2)?,
             }
