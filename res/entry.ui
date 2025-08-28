@@ -2,8 +2,8 @@
 <interface>
     <requires lib="gtk" version="4.0"/>
 
-    <object class="GtkApplicationWindow" id="CatalogizatorEntryWindow">
-    <!-- #CatalogizatorEntryWindow START -->
+    <object class="GtkWindow" id="CatalogEntryWindow">
+    <!-- #CatalogEntryWindow START -->
 
         <property name="title">Запись ID=[]</property>
         <property name="default-width">640</property>
@@ -20,7 +20,7 @@
 
         </child>
 
-    <!-- #CatalogizatorEntryWindow END -->
+    <!-- #CatalogEntryWindow END -->
     </object>
 
 </interface>

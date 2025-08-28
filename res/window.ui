@@ -30,7 +30,7 @@
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Выход</attribute>
-                <!-- <attribute name='action'>app.exit</attribute> -->
+                <attribute name='action'>window.close</attribute>
             </item>
         </section>
     </menu>
@@ -57,6 +57,7 @@
                 <child type="start">
                     <object class="GtkButton">
                         <property name="icon-name">list-add-symbolic</property>
+                        <property name="action-name">app.open_entry_form</property>
                     </object>
                 </child>
                 <child type="start">
