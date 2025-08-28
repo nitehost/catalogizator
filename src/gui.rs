@@ -18,6 +18,7 @@ pub fn get_window(win_id: &str, ui_file: &str) -> gtk::Window {
 pub fn get_app_accels() -> Vec<(&'static str, &'static str)> {
     let mut accels = vec![];
 
+    accels.push(("app.help", "<F1>"));
     accels.push(("window.close", "<Ctrl>Q"));
     accels.push(("app.open_entry_form", "<Ctrl>N"));
 

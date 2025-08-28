@@ -6,27 +6,27 @@
         <section>
             <item>
                 <attribute name='label' translatable='yes'>Коллекции</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <!-- <attribute name='action'>app.open_collections_win</attribute> -->
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Статусы</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <!-- <attribute name='action'>app.open_statuses_win</attribute> -->
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Группы</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <!-- <attribute name='action'>app.open_groups_win</attribute> -->
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Шаблоны</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <!-- <attribute name='action'>app.open_templates_win</attribute> -->
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Статистика</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <!-- <attribute name='action'>app.open_stats_win</attribute> -->
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Справка</attribute>
-                <!-- <attribute name='action'>app.about</attribute> -->
+                <attribute name='action'>app.help</attribute>
             </item>
             <item>
                 <attribute name='label' translatable='yes'>Выход</attribute>
@@ -61,8 +61,16 @@
                     </object>
                 </child>
                 <child type="start">
-                    <object class="GtkButton">
+                    <object class="GtkMenuButton">
                         <property name="icon-name">edit-find-symbolic</property>
+                        <property name="direction">1</property>
+                        <property name="popover">
+                            <object class="GtkPopover">
+                                <child>
+                                    <object class="GtkSearchEntry"></object>
+                                </child>
+                            </object>
+                        </property>
                     </object>
                 </child>
                 <child type="start">
